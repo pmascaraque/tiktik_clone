@@ -71,7 +71,7 @@ const VideoCard: NextPage<Iprops> = ({ post }) => {
           }}
           className='rounded-3xl'
         >
-          <Link href='/'>
+          <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
               loop
