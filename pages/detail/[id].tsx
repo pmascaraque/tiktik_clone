@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import { GoVerified } from 'react-icons/go';
-import Image from 'next/image';
-import Link from 'next/link';
-import { MdOutlineCancel } from 'react-icons/md';
-import { BsFillPlayFill } from 'react-icons/bs';
-import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
+import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import { GoVerified } from "react-icons/go";
+import Image from "next/image";
+import Link from "next/link";
+import { MdOutlineCancel } from "react-icons/md";
+import { BsFillPlayFill } from "react-icons/bs";
+import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 
-import Comments from '../../components/Comments';
-import { BASE_URL } from '../../utils';
-import LikeButton from '../../components/LikeButton';
-import useAuthStore from '../../store/authStore';
-import { Video } from '../../types';
-import axios from 'axios';
+import Comments from "../../components/Comments";
+import { BASE_URL } from "../../utils";
+import LikeButton from "../../components/LikeButton";
+import useAuthStore from "../../store/authStore";
+import { Video } from "../../types";
+import axios from "axios";
 
 interface IProps {
   postDetails: Video;
@@ -48,12 +48,12 @@ const Detail = ({ postDetails }: IProps) => {
 
   const handleLike = async (like: boolean) => {
     if (userProfile) {
-      const res = await axios.put(`${BASE_URL}/api/like`, {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
         like,
       });
-      setPost({ ...post, likes: res.data.likes });
+      setPost({ ...post, likes: data.likes });
     }
   };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import useAuthStore from "../store/authStore";
 import { BASE_URL } from "../utils";
@@ -7,14 +7,26 @@ import { BASE_URL } from "../utils";
 interface IProps {
   handleLike: () => void;
   handleDislike: () => void;
+  likes: any[];
 }
 
-const LikeButton = ({ handleLike, handleDislike }: IProps) => {
-  const [alreadyLiked, setAlreadyLiked] = useState(true);
+const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
+  const [alreadyLiked, setAlreadyLiked] = useState(false);
   const { userProfile }: any = useAuthStore();
+  const filterLikes = likes?.filter((item) => item._ref === userProfile._id)
+
+  useEffect(() => {
+    if(filterLikes.length > 0) {
+      setAlreadyLiked(true);
+    } else {
+      setAlreadyLiked(false);
+    }
+  
+  }, [likes])
+  
 
   return (
-    <div className={`${flex} gap-6`}>
+    <div className={`flex gap-6`}>
       <div className='mt-4 flex flex-col justify-center items-center cursor-pointer'>
         {alreadyLiked ? (
           <div
