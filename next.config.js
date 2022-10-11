@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['static.wikia.nocookie.net', 'lh3.googleusercontent.com', 'https://upload.wikimedia.org/']
+    domains: ['static.wikia.nocookie.net', 'lh3.googleusercontent.com', 'upload.wikimedia.org']
   },
   swcMinify: true,
 }
