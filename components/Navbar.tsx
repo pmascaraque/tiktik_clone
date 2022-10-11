@@ -11,7 +11,7 @@ import { createOrGetUser } from "../utils";
 import useAuthStore from "../store/authStore";
 
 const Navbar = () => {
-  const { userProfile, addUser, removeUser } = useAuthStore();
+  const { userProfile, addUser, removeUser }: any = useAuthStore();
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
