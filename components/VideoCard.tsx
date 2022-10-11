@@ -27,6 +27,12 @@ const VideoCard: NextPage<Iprops> = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    if (post && videoRef?.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [post, isMuted]);
+
   return (
     <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
       <div>
